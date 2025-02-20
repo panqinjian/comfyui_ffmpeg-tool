@@ -13,16 +13,14 @@ class VideoAudioMix(FFmpegBase):
     def INPUT_TYPES(cls):
         return {
             "required": {
-                'conditioning_1': ('CONDITIONING',), 'conditioning_2': ('CONDITIONING',),
-                "视频文件": ("STRING",input ),
-                "音频文件": ("STRING", input),
+                '视频文件': ('STRING',), '音频文件': ('STRING',),
                 "视频音量": ("FLOAT", {"default": 0.5, "min": 0.0, "max": 5.0, "step": 0.1}),
                 "音频音量": ("FLOAT", {"default": 0.5, "min": 0.0, "max": 5.0, "step": 0.1}),
                 "使用GPU": ("BOOLEAN", {"default": True}),
                 "降噪级别": (["关闭", "弱", "中", "强"], {"default": "关闭"}),
                 "比特率": (["语音(64k)", "播客(96k)", "音乐(128k)", "电影(192k)", "游戏(256k)", "高质音乐(320k)", "无损(flac)"], {"default": "音乐(128k)"}),  
                 "声道": (["单声道(1)", "立体声(2)", "5.1声道(6)", "7.1声道(8)"], {"default": "立体声(2)"}),  
-                "覆盖原文件": ("BOOLEAN", {"default": False}),
+                "覆盖原文件": ("BOOLEAN", {"default": True}),
             },
             "optional": {
                 "淡入时长": ("FLOAT", {
